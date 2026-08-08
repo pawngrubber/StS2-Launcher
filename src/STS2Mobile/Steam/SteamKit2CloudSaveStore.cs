@@ -239,6 +239,14 @@ public class SteamKit2CloudSaveStore : ICloudSaveStore, ISaveStore, IDisposable
 
     public bool IsFilePersisted(string path) => _cache.IsFilePersisted(path);
 
+    // The public-beta game assembly (buildid 24489008) added this member to
+    // ICloudSaveStore; it has no counterpart in the public build this class
+    // was originally written against. This client has no local "disable cloud
+    // sync" setting of its own — the whole point of running it is to keep
+    // mobile saves in sync with the desktop's Steam Cloud saves — so cloud
+    // sync is always considered enabled here.
+    public bool HasUserEnabledCloudSync() => true;
+
     public void BeginSaveBatch()
     {
         lock (_batchLock)
