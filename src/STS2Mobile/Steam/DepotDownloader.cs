@@ -225,7 +225,7 @@ public class DepotDownloader : IDisposable
                     continue;
             }
 
-            var gidNode = manifests["public"]["gid"];
+            var gidNode = manifests["public-beta"]["gid"];
             if (gidNode == KeyValue.Invalid || gidNode.Value == null)
                 continue;
 
@@ -306,7 +306,7 @@ public class DepotDownloader : IDisposable
             depotId,
             AppId,
             manifestId,
-            "public"
+            "public-beta"
         );
         if (code == 0)
             throw new Exception(
